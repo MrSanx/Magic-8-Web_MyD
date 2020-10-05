@@ -6,21 +6,6 @@ formulario_formu = document.forms["formu"];
 formulario_formu.addEventListener("submit", cargarInfo, false); //Cada vez que se le de a submit, se va a prevenir que se mande
 
 
-function validarUsername() {
-    let username = formulario_formu.elements["username"].value;
-    
-    var ajax = new XMLHttpRequest();
- 
-    ajax.onreadystatechange = function () {//callback
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById('available').innerText = this.responseText;
-        }
-    }
-
-    ajax.open("POST", "ServicioComprobar", true);
-    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ajax.send("username=" + username);
-}
 
 function cargarInfo(e) {
     e.preventDefault();
@@ -44,16 +29,34 @@ function inicializarXHMHttpRequest() {
 function crear_query_String() {
     let username = formulario_formu.elements["username"].value;
     let password = formulario_formu.elements["password"].value;
- let confirmacion = formulario_formu.elements["confirm"].value;
+    let confirmacion = formulario_formu.elements["confirm"].value;
 
 
     return "username=" + encodeURI(username) +
-            "&password=" + encodeURI(password)+
+            "&password=" + encodeURI(password) +
             "&confirmacion=" + encodeURI(confirmacion);
 }
 function ProcesaRespuesta() {
     if (request.readyState === 4 & request.status === 200) {
         console.log(request.response);
-       
+       formulario_formu.reset();
+      
+
     }
+}
+
+function validarUsername() {
+    let username = formulario_formu.elements["username"].value;
+
+    var ajax = new XMLHttpRequest();
+
+    ajax.onreadystatechange = function () {//callback
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('available').innerText = this.responseText;
+        }
+    }
+
+    ajax.open("POST", "ServicioComprobar", true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.send("username=" + username);
 }

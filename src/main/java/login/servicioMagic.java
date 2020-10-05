@@ -34,7 +34,7 @@ public class servicioMagic extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String question = request.getParameter("question");
-            if (question == "") {
+            if (question.isEmpty()) {
                 out.println("Hey!, tienes que preguntar algo.");
             } else {
                 String answer;

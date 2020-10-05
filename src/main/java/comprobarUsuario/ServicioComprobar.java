@@ -48,7 +48,7 @@ public class ServicioComprobar extends HttpServlet {
                 while ((line = br.readLine()) != null) {
 
                     String[] data = line.split(",");
-                    if (userName.equalsIgnoreCase(data[0])) {
+                    if (("{\"usuario\":\""+userName+"\"").equalsIgnoreCase(data[0])) {
                         resp = false;
                     }
                 }
