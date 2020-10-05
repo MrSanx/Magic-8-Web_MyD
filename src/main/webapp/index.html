@@ -25,7 +25,8 @@
             <div class="box">
                 <h2>No tienes una cuenta?, crea una ya!</h2> <br>
                 <form  id="formu" class="formulario" name="formu" method="post" action="servicioLogin"  >
-                <p>Username </p> <input type="text" name="username" id="username"> <br><br>
+                <p>Username </p> <input type="text" name="username" id="username" required onkeyup="validarUsername()"> <br><br>
+               <p id="available">Digite un usuario</p>
                 <p>Password </p> <input type="text" name="password" id="password"> <br><br>
                 <p>Confirm</p> <input type="text" name="confirm" id="confirm"> <br><br>
                <button type="submit" class="button" > Enviar</button>
