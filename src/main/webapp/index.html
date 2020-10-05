@@ -6,7 +6,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="icon" href="sources\brand.png" type="image/icon type">
             <title>Home | Sanx Portafolio</title>
-            <script src="index.js" type="text/javascript"></script>
+            
             <!--FONT ROBOTO-->
             <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap"
                   rel="stylesheet">
@@ -16,7 +16,7 @@
         <body>
             <div class="box">
                 <h1>Login</h1>
-                <form>
+                <form >
                     <p>Username </p> <input type="text" name="username" id="username"> <br><br>
                     <p>Password </p> <input type="text" name="password" id="password"> <br><br>
                     <a href="signUp.html" class="button">Ingresar!</a>
@@ -24,10 +24,14 @@
             </div>
             <div class="box">
                 <h2>No tienes una cuenta?, crea una ya!</h2> <br>
+                <form  id="formu" class="formulario" name="formu" method="post" action="servicioLogin"  >
                 <p>Username </p> <input type="text" name="username" id="username"> <br><br>
                 <p>Password </p> <input type="text" name="password" id="password"> <br><br>
                 <p>Confirm</p> <input type="text" name="confirm" id="confirm"> <br><br>
-                <a href="signUp.html" class="button">Registro!</a>  
+               <button type="submit" class="button" > Enviar</button>
+
+                </form>
             </div>
+            <script src="login.js" type="text/javascript"></script>
         <body>
     </html>

@@ -37,19 +37,13 @@ public class servicioLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet servicioLogin</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            
+   
             String username = request.getParameter("username");
-            String password = request.getParameter("oassword");
+            String password = request.getParameter("password");
           
             String queryJSON = "{\"usuario\":\"" + username + "\",\"password\":\"" + password + "\"}";
             try {   
-            File f = new File("contacto.json");
+            File f = new File("usuariosProyecto.json");
             FileWriter fw = new FileWriter(f, true);
             BufferedWriter bw = new BufferedWriter(fw);
 
@@ -62,8 +56,7 @@ public class servicioLogin extends HttpServlet {
 
         }
             out.print(queryJSON);
-            out.println("</body>");
-            out.println("</html>");
+           
         }
     }
 
