@@ -3,13 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login;
+package comprobarUsuario;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mafc1
+ * @author Atomi
  */
-@WebServlet(name = "servicioLogin", urlPatterns = {"/servicioLogin"})
-public class servicioLogin extends HttpServlet {
+@WebServlet(name = "servicioGetIn", urlPatterns = {"/servicioGetIn"})
+public class servicioGetIn extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,44 +33,19 @@ public class servicioLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-
-            String userName = request.getParameter("username");
-            String password = request.getParameter("password");
-            String confirm = request.getParameter("confirm");
-
-            File fi = new File("usuariosProyecto.json");
-            try (FileReader fr = new FileReader(fi)) {
-                BufferedReader br = new BufferedReader(fr);
-
-                boolean resp = true;
-                String line;
-                while ((line = br.readLine()) != null) {
-
-                    String[] data = line.split(";");
-                    if (userName.equalsIgnoreCase(data[0])) {
-                        resp = false;
-                    }
+            String user = request.getParameter("user");
+            String pass = request.getParameter("pass");
+            String varName = request.getParameter("password");
+            String varPass = request.getParameter("password");
+            if (user != varName) {
+                if (pass != varPass){
+                    //Aqui debería abrirsé el magic.html
+                    out.println("Ser ");
                 }
-                out.println(userName + ((resp) ? " disponible" : " no disponible, use otro."));
-
-                String queryJSON = "{\"usuario\":\"" + userName + "\",\"password\":\"" + password + "\"}";
-                try {
-                    File f = new File("usuariosProyecto.json");
-                    FileWriter fw = new FileWriter(f, true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-
-                    bw.write(queryJSON);
-                    bw.newLine();
-
-                    bw.close();
-
-                } catch (Exception e) {
-
-                }
-                out.print(queryJSON);
-
             }
+            
+            
+            
         }
     }
 

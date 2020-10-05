@@ -14,20 +14,20 @@
         <body>
             <div class="box">
                 <h1>Login</h1>
-                <form >
-                    <p>Username </p> <input type="text" name="username" id="username"> <br><br>
-                    <p>Password </p> <input type="text" name="password" id="password"> <br><br>
-                    <a href="signUp.html" class="button">Ingresar!</a>
+                <form id="formu" class="formulario" name="formu" method="post" action="servicioGetIn" >
+                    <p>Username </p> <input type="text" name="user" id="user"> <br><br>
+                    <p>Password </p> <input type="text" name="pass" id="pass"> <br><br>
+                    <button type="submit" class="button" > Ingresar</button>
                 </form>
             </div>
             <div class="box">
                 <h2>No tienes una cuenta?, crea una ya!</h2> <br>
                 <form  id="formu" class="formulario" name="formu" method="post" action="servicioLogin"  >
-                <p>Username </p> <input type="text" name="username" id="username" required onkeyup="validarUsername()"> <br><br>
-               <p id="available">Digite un usuario</p>
-                <p>Password </p> <input type="text" name="password" id="password"> <br><br>
-                <p>Confirm</p> <input type="text" name="confirm" id="confirm"> <br><br>
-               <button type="submit" class="button" > Enviar</button>
+                    <p>Username </p> <input type="text" name="username" id="username" required onkeyup="validarUsername()"> <br><br>
+                    <p id="available">Digite un usuario</p>
+                    <p>Password </p> <input type="text" name="password" id="password"> <br><br>
+                    <p>Confirm</p> <input type="text" name="confirm" id="confirm"> <br><br>
+                    <button type="submit" class="button" > Enviar</button>
 
                 </form>
             </div>
