@@ -2,7 +2,6 @@
 var request, formulario_formu;
 
 formulario_formu = document.forms["formu"];
-
 formulario_formu.addEventListener("submit", cargarInfo, false); //Cada vez que se le de a submit, se va a prevenir que se mande
 
 
@@ -51,7 +50,7 @@ function validarUsername() {
     var ajax = new XMLHttpRequest();
 
     ajax.onreadystatechange = function () {//callback
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             document.getElementById('available').innerText = this.responseText;
         }
     }
