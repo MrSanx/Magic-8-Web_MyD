@@ -35,7 +35,17 @@ public class servicioMagic extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String question = request.getParameter("question");
             if (question.isEmpty()) {
-                out.println("Hey!, tienes que preguntar algo.");
+                out.println("<head>\n"
+                        + "            <meta charset=\"UTF-8\">\n"
+                        + "            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                        + "            <title>Login | Magic-8</title>\n"
+                        + "            <!--FONT ROBOTO-->\n"
+                        + "            <link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap\"\n"
+                        + "                  rel=\"stylesheet\">\n"
+                        + "            <!--CUSTOM CSS-->\n"
+                        + "            <link rel=\"stylesheet\" href=\"styles.css\">\n"
+                        + "        </head>");
+                out.println("<div class=\"box\"> <h2>Hey!, tienes que preguntar algo.</h2><br><a href=\"magic.html\" class=\"button\">Pregunta >:c</a></div>");
             } else {
                 String answer;
                 int randomNumber = (int) (Math.random() * 21);
@@ -109,7 +119,17 @@ public class servicioMagic extends HttpServlet {
                     default:
                         throw new AssertionError();
                 }
-                out.print(answer);
+                out.println("<head>\n"
+                        + "            <meta charset=\"UTF-8\">\n"
+                        + "            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                        + "            <title>Login | Magic-8</title>\n"
+                        + "            <!--FONT ROBOTO-->\n"
+                        + "            <link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap\"\n"
+                        + "                  rel=\"stylesheet\">\n"
+                        + "            <!--CUSTOM CSS-->\n"
+                        + "            <link rel=\"stylesheet\" href=\"styles.css\">\n"
+                        + "        </head>");
+                out.println("<div class=\"box\"> <h2>Tu respuesta es: </h2><br><h3>" + answer + "</h3><br><a href=\"magic.html\" class=\"button\">Volver a preguntar</a></div>");
             }
         }
     }

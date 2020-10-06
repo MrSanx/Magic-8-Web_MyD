@@ -19,9 +19,11 @@ and open the template in the editor.
         <div class="box">
             <h1>Magic-8</h1>
             <h3>Bienvenido!, pregunta una pregunta preguntosa a nuestro adivino.</h3><br>
-            <form  id="formuQuest" class="formulario" name="formuQuest" method="post" action="servicioMagic">
+            <form  id="formuQuest" class="formulario" name="formuQuest" method="post" action="servicioMagic" onsubmit="Magic()">
                 <p>Pregunta </p> <input type="text" name="question" id="question"> <br>
-                <button type="submit" class="button" > Preguntar</button>
+                <button type="submit" class="button"> Preguntar</button>
+                <a href="index.html" class="button">Salir</a>
+                <h2 id="available"></h2>
             </form>
         </div>
         <script src="login.js" type="text/javascript"></script>

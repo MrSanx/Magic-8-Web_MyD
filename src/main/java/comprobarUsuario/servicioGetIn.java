@@ -5,6 +5,9 @@
  */
 package comprobarUsuario;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,19 +36,44 @@ public class servicioGetIn extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            //Variables
             String user = request.getParameter("user");
+            //out.println("Usuario= " + user + "<br>");
             String pass = request.getParameter("pass");
-            String varName = request.getParameter("password");
-            String varPass = request.getParameter("password");
-            if (user != varName) {
-                if (pass != varPass){
-                    //Aqui debería abrirsé el magic.html
-                    out.println("Ser ");
+            //out.println("Password= " + pass + "<br>");
+            out.println("<head>\n"
+                    + "            <meta charset=\"UTF-8\">\n"
+                    + "            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                    + "            <title>Login | Magic-8</title>\n"
+                    + "            <!--FONT ROBOTO-->\n"
+                    + "            <link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap\"\n"
+                    + "                  rel=\"stylesheet\">\n"
+                    + "            <!--CUSTOM CSS-->\n"
+                    + "            <link rel=\"stylesheet\" href=\"styles.css\">\n"
+                    + "        </head>");
+            out.println("<div class=\"box\"> <h2>Usuario o contraseña incorrecto.</h2><br><a href=\"index.html\" class=\"button\">Volver a inicio</a></div>");
+
+            //ReadFile
+            File f = new File("usuariosProyecto.json");
+            try (FileReader fr = new FileReader(f)) {
+                BufferedReader br = new BufferedReader(fr);
+
+                boolean resp = true;
+                String line;
+                while ((line = br.readLine()) != null) {
+                    //out.println("{\"usuario\":\"" + user + "\"," + "\"password\":\"" + pass + "\"}<br>");
+                    String[] data = line.split("}");
+                    if (("{\"usuario\":\"" + user + "\"," + "\"password\":\"" + pass + "\"").equalsIgnoreCase(data[0])) {
+
+                        out.println("Usuario ingresado con exito <br>");
+                        response.sendRedirect("magic.html");
+                    } else {
+                        //out.println("El usuario o la contraseña no existe <br>");
+                        //out.println(data[0]);
+                    }
                 }
             }
-            
-            
-            
+
         }
     }
 

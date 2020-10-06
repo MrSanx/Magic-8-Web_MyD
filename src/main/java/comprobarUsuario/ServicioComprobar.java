@@ -35,12 +35,12 @@ public class ServicioComprobar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
 
             String userName = request.getParameter("username");
 
             File f = new File("usuariosProyecto.json");
-            try ( FileReader fr = new FileReader(f)) {
+            try (FileReader fr = new FileReader(f)) {
                 BufferedReader br = new BufferedReader(fr);
 
                 boolean resp = true;
@@ -48,12 +48,11 @@ public class ServicioComprobar extends HttpServlet {
                 while ((line = br.readLine()) != null) {
 
                     String[] data = line.split(",");
-                    if (("{\"usuario\":\""+userName+"\"").equalsIgnoreCase(data[0])) {
+                    if (("{\"usuario\":\"" + userName + "\"").equalsIgnoreCase(data[0])) {
                         resp = false;
                     }
                 }
                 out.println(userName + ((resp) ? " disponible" : " no disponible, use otro."));
-
             }
         }
     }
