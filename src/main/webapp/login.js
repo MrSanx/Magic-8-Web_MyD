@@ -38,6 +38,7 @@ function crear_query_String() {
 function ProcesaRespuesta() {
     if (request.readyState === 4 & request.status === 200) {
         console.log(request.response);
+        alert("Se ha registrado con exito");
        formulario_formu.reset();
       
 
@@ -46,12 +47,28 @@ function ProcesaRespuesta() {
 
 function validarUsername() {
     let username = formulario_formu.elements["username"].value;
-
+    var usuarioFinal = username+" no disponible, use otro.";
+    var respuesta ="";
+   
+    
     var ajax = new XMLHttpRequest();
 
     ajax.onreadystatechange = function () {//callback
         if (this.readyState === 4 && this.status === 200) {
             document.getElementById('available').innerText = this.responseText;
+            respuesta = this.responseText;
+             var comparacion = usuarioFinal.localeCompare(respuesta);
+            console.log(comparacion);
+            console.log(usuarioFinal);
+            console.log(respuesta);
+            
+            if (comparacion==-1) {
+               document.getElementById('botonSub').disabled = true;
+                 alert("Este usuario no esta disponible, no podra registrarse con este usuario.");
+            } else {
+                 document.getElementById('botonSub').disabled = false;
+                 
+            }
         }
     }
 
